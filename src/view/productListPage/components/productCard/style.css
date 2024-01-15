@@ -1,0 +1,35 @@
+.product-card {
+    width: 350px;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 2px 10px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    gap: 5px;
+}
+
+.product-card .product-card__cover {
+    align-self: center;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.product-card .product-card__name {
+    margin-top: 15px;
+    color: cornflowerblue;
+    font-weight: bolder;
+    font-size: 25px;
+    text-wrap: wrap;
+}
+
+.product-card .product-card__brand {
+    color: gray;
+}
+
+.product-card .product_card__price {
+    font-size: 35px;
+    color: chartreuse;
+}

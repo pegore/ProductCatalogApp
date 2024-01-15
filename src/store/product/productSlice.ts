@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { StoreStateStatus } from "../../model/storeStateStatus";
-import { StateSlice } from "../../model/StateSlice";
+import { StoreStateStatus } from "../../model/store/StoreStateStatus";
+import { StateSlice } from "../../model/store/StateSlice";
+import { Product } from "../../model/Product";
+import api from "../../../public/api.json";
 
-const initialState: StateSlice = {
-    data: [],
+const initialState: StateSlice<Product> = {
+    data: api,
     status: StoreStateStatus.COMPLETE,
 }
 

@@ -1,25 +1,14 @@
-import { useEffect } from 'react'
 import './App.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchProductList } from './store/product/productSlice'
-import { AsyncThunkAction } from '@reduxjs/toolkit';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ProductListPage from './view/productListPage';
 
 function App() {
-  const dispatch = useDispatch();
-  const productList = useSelector((state: any) => state.product.data);
-
-  const searchProduct = () => {
-    dispatch(fetchProductList())
-  }
-
-  useEffect(searchProduct, []);
-
   return (
-    <>
-      <div>
-        {JSON.stringify(productList)}
-       </div>
-    </>
+<BrowserRouter>
+		<Routes>
+			<Route path="/" element={<ProductListPage />} />
+		</Routes>
+	</BrowserRouter>
   )
 }
 

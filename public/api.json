@@ -1,14 +1,16 @@
 [
     {
+        "id": 1,
         "name": "Fiat strada adventure 2016",
         "brand": "Fiat",
-        "year": "2016",
-        "type": "Pìck-up"
+        "price": 45652.45,
+        "cover": "https://http2.mlstatic.com/D_NQ_NP_892282-MLB73951256673_012024-O.webp"
     },
     {
+        "id": 2,
         "name": "Jeep Renegade Longitude 2016",
         "brand": "Jeep",
-        "year": "2016",
-        "type": "SUV"
+        "price": 87952.84,
+        "cover": "https://http2.mlstatic.com/D_NQ_NP_882398-MLA73986542331_012024-O.webp"
     }
 ]
