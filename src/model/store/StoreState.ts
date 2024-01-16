@@ -1,6 +1,5 @@
-import { Product } from "../Product";
-import { StateSlice } from "./StateSlice";
+import { ProductStateSlide } from "./StateSlice";
 
 export interface StoreState {
-    product: StateSlice<Product>
+    product: ProductStateSlide
 }

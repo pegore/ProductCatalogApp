@@ -1,0 +1,29 @@
+.filter-field {
+    border: 1px solid black;
+    padding: 15px;
+}
+
+.filter-field .filter-field__name{
+    margin: 0;
+}
+
+.filter-field .filter-field__options{
+    padding: 0;
+    padding-left: 5px;
+    padding-top: 10px;
+    list-style: none;
+}
+
+.filter-field .filter-field__option {
+    margin: 0;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.filter-field .filter-field__option:hover {
+    color: darkgray;
+}
+
+.filter-field .filter-field__option.--active {
+    color: gray;
+}

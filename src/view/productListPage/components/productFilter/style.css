@@ -1,0 +1,44 @@
+.product-filter {
+    width: 15%;
+    box-sizing: border-box;
+}
+
+.product-filter .product-filter_list {
+    list-style: none;
+    padding: 0;
+    margin-left: 10px;
+}
+
+.product-filter .product-filter_list > :not(:first-child) {
+    margin-top: 15px;
+}
+
+
+.product-filter .product-filter_submit {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background: cornflowerblue;
+    color: whitesmoke;
+    font-size: 18px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.product-filter .product-filter_submit:disabled {
+    filter: grayscale(0.5);
+    cursor: help;
+}
+
+.product-filter .filter-field__fieldset {
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-filter .filter-field__field {
+    height: 35px;
+    width: 40%;
+}

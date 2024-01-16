@@ -1,3 +1,7 @@
 .product-list {
     display: flex;
 }
+
+.product-list .product-list__list {
+    display: flex;
+}

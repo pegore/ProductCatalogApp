@@ -1,23 +1,59 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { StoreStateStatus } from "../../model/store/StoreStateStatus";
-import { StateSlice } from "../../model/store/StateSlice";
+import { ProductStateSlide } from "../../model/store/StateSlice";
 import { Product } from "../../model/Product";
-import api from "../../../public/api.json";
+import { SelectedFilter } from "../../model/productList/SelectedFilters";
 
-const initialState: StateSlice<Product> = {
-    data: api,
+const initialState: ProductStateSlide = {
+    data: [],
     status: StoreStateStatus.COMPLETE,
+    brands: []
+}
+
+function filterProductList(productList: Product[], filters?: SelectedFilter): Product[] {
+    if (!filters) {
+        return productList
+    }
+    let newProductList: Product[] = [...productList];
+    if (filters.searchFilter) {
+        newProductList = newProductList.filter(product => product.name.includes(filters.searchFilter || ''))
+    }
+
+    if (filters.genericFilters) {
+        filters.genericFilters.forEach(filter => {
+            if (filter.value == 'all') {
+                return;
+            }
+            newProductList = newProductList.filter(product => product[filter.name].toLowerCase() == filter.value)
+        })
+    }
+    if (filters.priceFilter && (filters.priceFilter?.minValue || filters.priceFilter?.maxValue)) {
+        newProductList = newProductList.filter(product => {
+            const hasMinValue = filters.priceFilter.minValue? product.price > filters.priceFilter.minValue: true
+            const hasMaxValue = filters.priceFilter.maxValue? product.price < filters.priceFilter.maxValue: true
+            return  hasMinValue && hasMaxValue
+        })
+    }
+    return newProductList;
+
 }
 
 export const fetchProductList = createAsyncThunk(
     'product/fetchProductList',
-    async () => {
+    async (selectedFilters?: SelectedFilter) => {
         try {
             const res = await fetch('api.json');
             const data = await res.json();
             return {
-                data,
-                status: StoreStateStatus.COMPLETE
+                data: filterProductList(data, selectedFilters),
+                brands: data.map((product: Product) => {
+                    return {
+                        value: product.brand.toLowerCase(),
+                        label: product.brand,
+                    }
+                }),
+                status: StoreStateStatus.COMPLETE,
+                filters: selectedFilters
             }
         } catch (error: any) {
             return {
@@ -38,7 +74,9 @@ export const productSlice = createSlice({
             state.status = StoreStateStatus.LOADING;
         }),
         builder.addCase(fetchProductList.fulfilled, (state, action) => {
+            state.filters = action.payload.filters;
             state.data = action.payload.data;
+            state.brands = action.payload.brands
             state.status = action.payload.status;
         }),
         builder.addCase(fetchProductList.rejected, (state, action) => {
