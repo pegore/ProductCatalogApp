@@ -7,11 +7,20 @@ import { useEffect, useState } from 'react'
 import { fetchProductList } from '../../../../store/product/ProductSlice'
 import { SelectedFilter, SelectedPriceFilter } from '../../../../model/productList/SelectedFilters'
 import ProductPriceField from '../productPriceFilter'
+import { IoCloseSharp } from 'react-icons/io5'
 
-export default function ProductFilter() {
+interface ProductFilterProps {
+    isClosed: boolean;
+    handleModalChange: (close: boolean) => void;
+}
+
+export default function ProductFilter({ isClosed, handleModalChange }: ProductFilterProps) {
     const [brandCurrentValue, setBrandCurrentValue] = useState('all');
+    const [categoryCurrentValue, setCategoryCurrentValue] = useState('all');
     const [priceCurrentValue, setPriceCurrentValue] = useState<SelectedPriceFilter>();
     const brands: Option[] = useSelector<StoreState, Option[]>(state => state.product.brands)
+    const categories: Option[] = useSelector<StoreState, Option[]>(state => state.product.categories)
+    const selectedFilters: SelectedFilter | undefined = useSelector<StoreState, SelectedFilter | undefined>(state => state.product.filters)
     const dispatch = useDispatch();
 
     const filters: ProductFilterFieldProps[] = [
@@ -26,11 +35,23 @@ export default function ProductFilter() {
             handleChanges: (value) => {
                 setBrandCurrentValue(value);
             }
-        }
+        },
+        {
+            name: 'category',
+            title: "Categoria",
+            options: [{
+                value: 'all',
+                label: 'Todas'
+            }, ...categories],
+            currentValue: categoryCurrentValue,
+            handleChanges: (value) => {
+                setCategoryCurrentValue(value);
+            }
+        },
     ]
 
     useEffect(() => {
-        dispatch(fetchProductList())
+        dispatch(fetchProductList(selectedFilters))
     }, [])
 
     function hasFilterSelect() {
@@ -49,7 +70,8 @@ export default function ProductFilter() {
             }),
             priceFilter: priceCurrentValue
         }
-        dispatch(fetchProductList(selectedFilters))
+        dispatch(fetchProductList(selectedFilters));
+        handleModalChange(true);
     }
 
     function handlePriceChanges(minValue: number, maxValue: number) {
@@ -61,11 +83,16 @@ export default function ProductFilter() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className='product-filter'>
-            <h3> Filtros </h3>
+        <form onSubmit={handleSubmit} className={`product-filter ${isClosed? '--hidden': ''}`}>
+            <div className='product-filter__title'>
+                <h3> Filtros </h3>
+                <button type='button' className='product-filter__close' onClick={() => handleModalChange(true)}>
+                    <IoCloseSharp size={30}/>
+                </button>
+            </div>
             <ul className='product-filter_list'>
                 <ProductPriceField currentValue={priceCurrentValue} handleChanges={handlePriceChanges}/>
-                {filters.map(filter => <ProductFilterField {...filter}  />)}
+                {filters.map((filter, index) => <ProductFilterField key={index} {...filter}  />)}
             </ul>
             <button className='product-filter_submit' type='submit' disabled={!hasFilterSelect()}> Filtrar </button>
         </form>

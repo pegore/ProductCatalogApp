@@ -4,13 +4,17 @@
         "name": "Fiat strada adventure 2016",
         "brand": "Fiat",
         "price": 45652.45,
-        "cover": "https://http2.mlstatic.com/D_NQ_NP_892282-MLB73951256673_012024-O.webp"
+        "category": "Pick-up",
+        "cover": "https://http2.mlstatic.com/D_NQ_NP_892282-MLB73951256673_012024-O.webp",
+        "description": "Ar Condicionado, Direção Hidráulica, Alarme, Vidro Elétrico, Capota Marítima, Espelhos Elétricos, Air Bag Duplo, ContaGiro, Estribo, Santo Antônio, Engate, Rodas de Liga Leve, Controle de Som no Volante, Air Bag, Sensor de Estacionamento Traseiro, Chave Canivete, Bluetooth, USB, Rádio"
     },
     {
         "id": 2,
         "name": "Jeep Renegade Longitude 2016",
         "brand": "Jeep",
         "price": 87952.84,
-        "cover": "https://http2.mlstatic.com/D_NQ_NP_882398-MLA73986542331_012024-O.webp"
+        "category": "SUV",
+        "cover": "https://http2.mlstatic.com/D_NQ_NP_882398-MLA73986542331_012024-O.webp",
+        "description": "laudo cautelar aprovado100%, manual e chave copia, revisado, interior conservado, pegamos seu veiculo de maior ou menor valor na troca, financiamos sem entrada sob consulta da financeira, veiculo com o ipva 2024 integral pago, mais informaçoes estamos a dispoisção."
     }
 ]

@@ -6,4 +6,6 @@ export interface Product {
     type: string
     price: number
     cover: string
+    description: string
+    category: string
 }

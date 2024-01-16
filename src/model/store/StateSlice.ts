@@ -11,5 +11,6 @@ export interface StateSlice<T> {
 
 export interface ProductStateSlide extends StateSlice<Product> {
     brands: Option[]
+    categories: Option[]
     filters?: SelectedFilter
 }

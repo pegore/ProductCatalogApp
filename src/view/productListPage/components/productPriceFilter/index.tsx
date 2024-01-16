@@ -28,7 +28,7 @@ export default function ProductPriceField({handleChanges}: ProductPriceFieldProp
 
     return (
         <li className='filter-field'>
-            <h4 className='filter-field__name'>Price</h4>
+            <h4 className='filter-field__name'>Preço</h4>
             <fieldset className='filter-field__fieldset'>
                 <input className='filter-field__field' type="number" onInput={handleMinValue}/>
                 <input className='filter-field__field'type="number" onInput={handleMaxValue}/>

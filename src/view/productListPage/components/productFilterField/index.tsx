@@ -15,7 +15,7 @@ export default function ProductFilterField({title, currentValue, options, handle
         <li className='filter-field'>
             <h4 className='filter-field__name'>{title}</h4>
             <ul className='filter-field__options'>
-                {options.map(option => <li className={`filter-field__option ${currentValue == option.value && '--active'}`} onClick={() => handleChanges(option.value)}> {option.label} </li>)}
+                {options.map((option, index) => <li key={index} className={`filter-field__option ${currentValue == option.value && '--active'}`} onClick={() => handleChanges(option.value)}> {option.label} </li>)}
             </ul>
         </li>
     )

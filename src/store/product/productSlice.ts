@@ -7,7 +7,8 @@ import { SelectedFilter } from "../../model/productList/SelectedFilters";
 const initialState: ProductStateSlide = {
     data: [],
     status: StoreStateStatus.COMPLETE,
-    brands: []
+    brands: [],
+    categories: []
 }
 
 function filterProductList(productList: Product[], filters?: SelectedFilter): Product[] {
@@ -52,6 +53,12 @@ export const fetchProductList = createAsyncThunk(
                         label: product.brand,
                     }
                 }),
+                categories: data.map((product: Product) => {
+                    return {
+                        value: product.category.toLowerCase(),
+                        label: product.category,
+                    }
+                }),
                 status: StoreStateStatus.COMPLETE,
                 filters: selectedFilters
             }
@@ -76,6 +83,7 @@ export const productSlice = createSlice({
         builder.addCase(fetchProductList.fulfilled, (state, action) => {
             state.filters = action.payload.filters;
             state.data = action.payload.data;
+            state.categories = action.payload.categories;
             state.brands = action.payload.brands
             state.status = action.payload.status;
         }),

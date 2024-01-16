@@ -1,6 +1,10 @@
 .product-filter {
-    width: 15%;
+    width: 300px;
     box-sizing: border-box;
+}
+
+.product-filter .product-filter__close {
+    display: none;       
 }
 
 .product-filter .product-filter_list {
@@ -41,4 +45,32 @@
 .product-filter .filter-field__field {
     height: 35px;
     width: 40%;
+}
+
+
+@media (max-width: 500px) {
+    .product-filter {
+        position: fixed;
+        background: whitesmoke;
+        top: 0;
+        left: 0px;
+        padding: 30px;
+        height: 100%;
+    }
+
+    .product-filter .product-filter__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .product-filter .product-filter__close {
+        display: block;
+        border: 0;
+        background: transparent;
+    }
+    
+    .--hidden {
+        display: none;
+    }
 }

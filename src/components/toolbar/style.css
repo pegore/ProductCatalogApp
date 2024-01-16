@@ -34,3 +34,12 @@
     background: white;
     border: none;
 }
+
+@media (max-width: 500px) {
+    .toolbar {
+        flex-direction: column;
+        gap: 5px;
+        height: 120px;
+        align-items: start;
+    }
+}
