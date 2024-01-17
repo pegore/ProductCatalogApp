@@ -1,0 +1,35 @@
+.product-list {
+    display: flex;
+}
+
+.product-list .product-list__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product-list .product-list__show-filter {
+    display: none;
+}
+
+
+@media (max-width: 500px) {
+    .product-list {
+        flex-direction: column;
+    }
+    .product-list .product-list__list {
+        padding: 0;
+    }
+
+    .product-list .product-list__show-filter {
+        display: block;
+        align-self: flex-end;
+        border: 0;
+        background: transparent;
+        margin: 15px 5px;
+    }
+
+    .product-list .product-list__list > :not(:first-child){
+        margin-top: 30px;
+    }
+}
