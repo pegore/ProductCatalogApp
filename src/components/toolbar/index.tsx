@@ -25,7 +25,7 @@ export default function Toolbar() {
 
     return (
         <header className='toolbar'>
-            <h1 className='toolbar__title'>Catalago de Produtos</h1>
+            <h1 className='toolbar__title'>Catálago de Produtos</h1>
             {
             location.pathname == '/' &&
                 <form className='toolbar__search' onSubmit={handleSearch}>

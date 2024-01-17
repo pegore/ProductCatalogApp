@@ -24,7 +24,10 @@
     color: cornflowerblue;
     font-weight: bolder;
     font-size: 25px;
-    text-wrap: wrap;
+    text-wrap: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-card .product-card__brand {
